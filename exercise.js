@@ -1,15 +1,14 @@
 var fs = require("fs");
+
+//read grid from file
 var gridExercise = fs.readFileSync("./exerciseGrid.json", "utf-8");
 var grid100x100 = fs.readFileSync("./100x100.json", "utf-8");
-
-//you can import your custom test file here
-//var [insertVariableName] = fs.readFileSync("./[insertFileName].json", "utf-8");
-
-//to run the program with your custom file, insert your variable name in parse function
 var grid = JSON.parse(gridExercise);
 
+//grid dimensions
 var HEIGHT = grid.length;
 var WIDTH = grid[0].length;
+
 //GROUPS contains every group created
 var GROUPS = [];
 
@@ -69,6 +68,8 @@ for (var i = 0; i < HEIGHT - 1; i++) {
         var proceed = true;
 
         if (grid[i][j] == 1) {
+
+            //check if point is already in any of the discovered groups
             if (findInArray(GROUPS, [i, j])) {
                 proceed = false;
             }
