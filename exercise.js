@@ -67,7 +67,7 @@ for (var i = 0; i < HEIGHT - 1; i++) {
 
         var proceed = true;
 
-        if (grid[i][j] == 1) {
+        if (grid[i][j] === 1) {
 
             //check if point is already in any of the discovered groups
             if (findInArray(GROUPS, [i, j])) {
@@ -78,8 +78,10 @@ for (var i = 0; i < HEIGHT - 1; i++) {
             if (proceed) {
                 group = [];
                 findGroup(group, i, j);
-                console.log('Grupo: ' + JSON.stringify(group));
-                GROUPS.push(group);
+                if(group.length > 1){
+                    GROUPS.push(group);
+                    console.log('Grupo: ' + JSON.stringify(group));
+                }
             }
         }
     }
